@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import NavFoot from "../components/NavFoot";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <NavFoot>
+      <Component {...pageProps} />
+    </NavFoot>
+  );
 }
 
-export default MyApp
+export default MyApp;
