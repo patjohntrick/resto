@@ -113,4 +113,5 @@ const reviews = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae quia totam repellat impedit, aperiam atque? Vero quod vel voluptate.",
   },
 ];
+
 module.exports = { hero, dishes, about, reviews };

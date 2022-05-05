@@ -8,7 +8,6 @@ const Navbar = () => {
   const handleNavbar = () => {
     setNavBar(!navBar);
   };
-  console.log(navBar);
   return (
     <>
       <nav className=" shadow fixed px-4 w-full bg-white z-50 ">
@@ -80,7 +79,10 @@ const Navbar = () => {
           }
         >
           <div className="nav-links-mobile">
-            <ul className=" space-y-2 font-medium " onClick={handleNavbar}>
+            <ul
+              className=" space-y-2 font-medium text-sm "
+              onClick={handleNavbar}
+            >
               <li>
                 <Link href="/">
                   <a>home</a>

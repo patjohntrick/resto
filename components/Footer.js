@@ -21,7 +21,7 @@ const Footer = () => {
               <a
                 className=" font-bold text-green-900"
                 href="https://www.facebook.com/johnpatrick13/"
-                target="_blank"
+                rel="noopener noreferrer"
               >
                 PATRICK
               </a>

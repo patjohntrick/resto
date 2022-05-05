@@ -10,6 +10,9 @@ module.exports = {
         josefin: ["Josefin-Sans", "mono"],
       },
     },
+    screens: {
+      phone: "425px",
+    },
   },
   plugins: [],
 };
