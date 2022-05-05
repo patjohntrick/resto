@@ -75,38 +75,42 @@ const Navbar = () => {
       >
         <div
           className={
-            "links absolute bg-green-800 p-4 top-0 w-[180px] h-full text-right uppercase transition-all " +
+            "links absolute bg-green-50 text-green-900 p-4 top-0 w-[180px] h-full text-right uppercase transition-all " +
             (navBar ? "right-0" : "right-[-70%]")
           }
         >
           <div className="nav-links-mobile">
-            <ul className=" space-y-4 text-white" onClick={handleNavbar}>
+            <ul className=" space-y-2 font-medium " onClick={handleNavbar}>
               <li>
                 <Link href="/">
                   <a>home</a>
                 </Link>
               </li>
+              <hr />
               <li>
                 <Link href="/menu">
                   <a>menu</a>
                 </Link>
               </li>
+              <hr />
               <li>
                 <Link href="/contact">
                   <a>contact us</a>
                 </Link>
               </li>
+              <hr />
               <li>
                 <Link href="/cart">
                   <a>cart</a>
                 </Link>
               </li>
-
+              <hr />
               <li>
                 <Link href="/login">
                   <a>login</a>
                 </Link>
               </li>
+              <hr />
             </ul>
           </div>
         </div>

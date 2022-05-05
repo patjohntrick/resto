@@ -14,7 +14,7 @@ const Dishes = () => {
         {dishes.map((dish) => {
           return (
             <div
-              className="box bg-white w-[90%] m-auto text-center rounded shadow-md pt-6 pb-8 space-y-4 capitalize"
+              className="box bg-white w-[90%] m-auto text-center rounded shadow-md pt-6 pb-8 space-y-4 capitalize hover:shadow-xl transition-all"
               key={dish.id}
             >
               <div className="img-container grid place-items-center">

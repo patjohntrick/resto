@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import About from "../components/About";
 import Dishes from "../components/Dishes";
+import Feedback from "../components/Feedback";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
 // import jwt_decode from "jwt-decode";
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Dishes />
       <About />
+      <Feedback />
     </>
   );
 }
