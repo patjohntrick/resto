@@ -1,13 +1,39 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
+import jwt_decode from "jwt-decode";
+import { AiOutlineDown } from "react-icons/ai";
 
 const Navbar = () => {
   const [navBar, setNavBar] = useState(false);
+  const [user, setUser] = useState({});
+  const [profile, setProfile] = useState(false);
 
   const handleNavbar = () => {
     setNavBar(!navBar);
   };
+
+  const isLog = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decode = jwt_decode(token);
+      setUser(decode);
+    }
+  };
+  // console.log(user);
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+    setNavBar(!navBar);
+  };
+
+  const handleProfile = () => {
+    setProfile(!profile);
+  };
+
+  useEffect(() => {
+    isLog();
+  }, []);
   return (
     <>
       <nav className=" shadow fixed px-4 w-full bg-white z-50 ">
@@ -45,12 +71,6 @@ const Navbar = () => {
           <div className="user-container hidden">
             <ul>
               <li>
-                <Link href="/cart">
-                  <a>cart</a>
-                </Link>
-              </li>
-
-              <li>
                 <Link href="/login">
                   <a>login</a>
                 </Link>
@@ -74,45 +94,69 @@ const Navbar = () => {
       >
         <div
           className={
-            "links absolute bg-green-50 text-green-900 p-4 top-0 w-[180px] h-full text-right uppercase transition-all " +
+            "links absolute bg-green-50 text-slate-900 p-4 top-0 w-[180px] h-full text-right uppercase transition-all " +
             (navBar ? "right-0" : "right-[-70%]")
           }
         >
-          <div className="nav-links-mobile">
-            <ul
-              className=" space-y-2 font-medium text-sm "
-              onClick={handleNavbar}
-            >
+          <div className="nav-links-mobile space-y-6 capitalize">
+            <ul className=" text-green-800 ">
+              <li
+                className={user.name ? "hidden" : "block text-xl font-medium"}
+                onClick={handleNavbar}
+              >
+                <Link href="/account/login">
+                  <a>login</a>
+                </Link>
+              </li>
+              <li
+                className={user.name ? "block text-xl font-medium" : "hidden"}
+              >
+                <div
+                  className=" flex justify-between items-center mb-1 "
+                  onClick={handleProfile}
+                >
+                  <p
+                    className={
+                      profile
+                        ? " relative rotate-180 -translate-x-2 icon text-[10px] text-slate-900 transition-all pr-2 "
+                        : "relative rotate-0 icon text-[10px] text-slate-900 transition-all pr-2"
+                    }
+                  >
+                    <AiOutlineDown />
+                  </p>
+                  <p>{user.name}</p>
+                </div>
+                <div className={profile ? "block text-sm" : "hidden"}>
+                  <div onClick={handleNavbar}>
+                    <Link href="/list">
+                      <a> list</a>
+                    </Link>
+                  </div>
+                  <div onClick={removeToken}>
+                    <Link href="/">
+                      <a>logout</a>
+                    </Link>
+                  </div>
+                </div>
+              </li>
+              <hr />
+            </ul>
+            <ul className=" space-y-2 font-medium " onClick={handleNavbar}>
               <li>
                 <Link href="/">
                   <a>home</a>
                 </Link>
               </li>
-              <hr />
               <li>
                 <Link href="/menu">
                   <a>menu</a>
                 </Link>
               </li>
-              <hr />
               <li>
                 <Link href="/contact">
                   <a>contact us</a>
                 </Link>
               </li>
-              <hr />
-              <li>
-                <Link href="/cart">
-                  <a>cart</a>
-                </Link>
-              </li>
-              <hr />
-              <li>
-                <Link href="/account/login">
-                  <a>login</a>
-                </Link>
-              </li>
-              <hr />
             </ul>
           </div>
         </div>

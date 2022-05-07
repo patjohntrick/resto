@@ -3,10 +3,10 @@ import { BiSearchAlt } from "react-icons/bi";
 import { MdBorderColor } from "react-icons/md";
 import Link from "next/link";
 
-const baseUri = "http://localhost:5000/products";
+const baseUri = "http://localhost:5000";
 
 export const getStaticProps = async () => {
-  const fetchProducts = await fetch(`${baseUri}`);
+  const fetchProducts = await fetch(`${baseUri}/products`);
   const data = await fetchProducts.json();
 
   return {

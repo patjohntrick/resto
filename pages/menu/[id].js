@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaShippingFast } from "react-icons/fa";
 import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
-const baseUri = "http://localhost:5000/products";
+const baseUri = "http://localhost:5000";
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${baseUri}`);
+  const res = await fetch(`${baseUri}/products`);
   const data = await res.json();
 
   const paths = data.map((data) => {
@@ -24,7 +26,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
 
-  const res = await fetch(`${baseUri}/${id}`);
+  const res = await fetch(`${baseUri}/products/${id}`);
   const data = await res.json();
 
   return {
@@ -36,7 +38,32 @@ const dish = ({ data }) => {
   const [order, setOrder] = useState(1);
   const [shipDropDown, setShipDropDown] = useState(false);
   const [deliverDropDown, setDeliverDropDown] = useState(false);
+  const [user, setUser] = useState("");
 
+  const getUser = () => {
+    const token = localStorage.getItem("token");
+    const decode = jwt_decode(token);
+    setUser(decode._id);
+    console.log(decode);
+  };
+
+  const addToList = async (e) => {
+    const newList = {
+      _id: data._id,
+      name: data.name,
+      price: data.price * order,
+      image: data.image,
+      description: data.description,
+    };
+    const res = await axios.post(`${baseUri}/users/${user}/list`, newList);
+    const resData = await res.data;
+    // console.log(resData);
+  };
+  // console.log(newList);
+
+  useEffect(() => {
+    getUser();
+  }, []);
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6 ">
       <div className="single-menu-container mt-6 w-[90%] m-auto">
@@ -106,7 +133,10 @@ const dish = ({ data }) => {
               <p className=" bg-green-800 text-white font-medium text-sm px-3 py-3 curso-pointer w-[50%] text-center capitalize shadow-md hover:shadow-lg transition-all rounded order-1 hover:bg-green-900 ">
                 order now
               </p>
-              <p className=" text-green-900 bg-white font-medium text-sm px-3 py-3 cursor-pointer w-[50%] capitalize text-center shadow-md hover:shadow-lg transition-all rounded hover:bg-green-900 hover:text-white  ">
+              <p
+                className=" text-green-900 bg-white font-medium text-sm px-3 py-3 cursor-pointer w-[50%] capitalize text-center shadow-md hover:shadow-lg transition-all rounded hover:bg-green-900 hover:text-white  "
+                onClick={addToList}
+              >
                 add to list
               </p>
             </div>

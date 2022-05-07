@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 const login = () => {
+  const baseUri = "http://localhost:5000";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const inputBox =
     " p-2 py-4 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0 ";
   const label = " font-semibold text-slate-900/90 ";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userLog = {
+      email,
+      password,
+    };
+    const res = await axios.post(`${baseUri}/users/login`, userLog);
+    const data = await res.data;
+    console.log(data.user);
+    if (res.status == 200) {
+      localStorage.setItem("token", data.user);
+      alert(`Hey thanks to login in Resto. Enjoy!`);
+      window.location.href = "/";
+    } else {
+      alert("Wrong credentials");
+    }
+  };
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6">
       <div className="img-container">
@@ -21,7 +44,7 @@ const login = () => {
           </p>
         </header>
 
-        <form action="" className="space-y-4 mb-4 ">
+        <form onSubmit={handleSubmit} className="space-y-4 mb-4 ">
           <div>
             <label htmlFor="email" className={label}>
               Email
@@ -32,6 +55,8 @@ const login = () => {
               id="email"
               name="email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className={inputBox}
             />
           </div>
@@ -45,6 +70,8 @@ const login = () => {
               id="password"
               required
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className={inputBox}
             />
           </div>
