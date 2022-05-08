@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
 import jwt_decode from "jwt-decode";
 import { AiOutlineDown } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
   const [navBar, setNavBar] = useState(false);
   const [user, setUser] = useState({});
   const [profile, setProfile] = useState(false);
@@ -24,6 +26,7 @@ const Navbar = () => {
   const removeToken = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
+    // router.push("/");
     setNavBar(!navBar);
   };
 

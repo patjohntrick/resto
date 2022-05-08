@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const register = () => {
+  const router = useRouter();
   const inputBox =
     " p-2 py-4 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0 ";
   const label = " font-semibold text-slate-900/90 ";
@@ -25,6 +27,7 @@ const register = () => {
     const data = await res.data;
     alert("Successfully register.");
     window.location.href = "/account/login";
+    // router.push("/account/login");
     console.log(data);
     // console.log(newUser);
   };
