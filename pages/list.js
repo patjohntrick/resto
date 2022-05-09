@@ -11,34 +11,31 @@ import axios from "axios";
 // };
 
 const cart = () => {
-  const [userList, setUserList] = useState([]);
-  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState([]);
 
   const baseUri = "http://localhost:5000";
-  const getUser = () => {
+  // const getUser = () => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     const decode = jwt_decode(token);
+  //     setUserId(decode._id);
+  //   }
+  // };
+
+  const getList = async () => {
     const token = localStorage.getItem("token");
     if (token) {
       const decode = jwt_decode(token);
-      setUserId(decode._id);
+      const res = await axios.get(`${baseUri}/users/${decode._id}`);
+      const data = await res.data;
+      setUser(data.cart);
     }
   };
-  // may error dito kelangan mo ifix
-  //
-  //
-  //
-  //
-  //
-  const getList = async () => {
-    const res = await axios.get(`${baseUri}/users/${userId}`);
-    const data = await res.data;
-    console.log(data);
-    setUserList(data);
-  };
   useEffect(() => {
-    getUser();
+    // getUser();
     getList();
   }, []);
-  console.log(userList);
+  console.log(user);
   // console.log(userId);
   return (
     <section className=" pt-[10vh] bg-black/5 ">
@@ -55,7 +52,35 @@ const cart = () => {
           </header>
 
           <div className="list-container first:rounded-t last:rounded-b">
-            {userList.map((user) => {
+            {user.map((cart) => {
+              if (user.length == 0) {
+                return (
+                  <div>
+                    <p>You don't have order yet.</p>
+                    <p>Order now</p>
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={cart._id}>
+                    <div className=" grid grid-cols-4 text-slate-900 text-center text-sm bg-white  shadow py-3 ">
+                      <div>
+                        <img src="" alt="" className="hidden" />
+                        <p>{cart.name}</p>
+                      </div>
+                      <p>10</p>
+                      <p>{cart.price}</p>
+                      <p className=" flex justify-center text-red-900 ">
+                        <GiCancel />
+                      </p>
+                    </div>
+                    <hr />
+                  </div>
+                );
+              }
+            })}
+
+            {/* {userList.map((user) => {
               return user.cart.map((userCart) => {
                 console.log(userCart);
                 if (userCart) {
@@ -84,7 +109,7 @@ const cart = () => {
                   );
                 }
               });
-            })}
+            })} */}
             {/* <div className=" grid grid-cols-4 text-slate-900 text-center text-sm bg-white  shadow py-3 ">
               <div>
                 <img src="" alt="" className="hidden" />
