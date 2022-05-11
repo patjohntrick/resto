@@ -7,6 +7,7 @@ const login = () => {
   const baseUri = "http://localhost:5000";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modal, setModal] = useState(false);
 
   const router = useRouter();
 
@@ -20,17 +21,47 @@ const login = () => {
       email,
       password,
     };
-    const res = await axios.post(`${baseUri}/users/login`, userLog);
-    const data = await res.data;
-    console.log(data.user);
+
+    const res = await fetch(`${baseUri}/users/login`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(userLog),
+    });
+    const data = await res.json();
+    console.log(data);
     if (res.status == 200) {
       localStorage.setItem("token", data.user);
-      alert(`Hey thanks to login in Resto. Enjoy!`);
+      alert("Login success.");
       window.location.href = "/";
-      // router.push("/");
+      console.log(data);
+    } else if (res.status == 404) {
+      alert("Email not found.");
+      setEmail("");
+      setPassword("");
+    } else if (res.status == 400) {
+      alert("Incorrect password.");
+      setPassword("");
     } else {
-      alert("Wrong credentials");
+      alert("Invalid credentials.");
+      setEmail("");
+      setPassword("");
     }
+
+    // const res = await axios.post(`${baseUri}/users/login`, userLog);
+    // const data = await res.data;
+    // console.log(data.user);
+    // if (res.status == 200) {
+    //   localStorage.setItem("token", data.user);
+    //   // window.location.href = "/";
+    //   console.log(data);
+    //   // alert("test");
+    //   // router.push("/");
+    // } else {
+    //   alert("Wrong credentials");
+    //   console.log(res.message);
+    // }
   };
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6">

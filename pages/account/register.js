@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { BsCheckCircle } from "react-icons/bs";
 
 const register = () => {
   const router = useRouter();
@@ -13,6 +14,7 @@ const register = () => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modal, setModal] = useState(false);
 
   const baseUri = "http://localhost:5000";
   const handleSubmit = async (e) => {
@@ -23,16 +25,66 @@ const register = () => {
       email,
       password,
     };
-    const res = await axios.post(`${baseUri}/users/register`, newUser);
-    const data = await res.data;
-    alert("Successfully register.");
-    window.location.href = "/account/login";
-    // router.push("/account/login");
+    // const res = await axios.post(`${baseUri}/users/register`, newUser);
+    // const data = await res.data;
+    // setModal(!modal);
+    // console.log(data);
+
+    const res = await fetch(`${baseUri}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    const data = res.json();
     console.log(data);
-    // console.log(newUser);
+    if (res.status == 200) {
+      alert("Success registration.");
+      router.push("/account/login");
+    } else if (res.status == 400) {
+      alert("Email is already registered. Please use another email.");
+      setEmail("");
+    } else if (res.status == 409) {
+      alert(
+        "Number is already used by another account. Please use another number."
+      );
+      setNumber("");
+    } else {
+      alert("Invalid info.");
+    }
   };
+  // const handleModal = () => {
+  //   setModal(!modal);
+  // };
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6">
+      {/* <div
+        className={
+          modal
+            ? " modal overlay fixed grid place-items-center top-0 w-full h-screen bg-black/80 z-50 transition-all"
+            : " modal overlay fixed hidden place-items-center top-0 w-full h-screen bg-black/80 z-50 opacity-0 transition-all"
+        }
+      >
+        <div className="modal bg-white rounded text-green-800 space-y-4 p-4 ">
+          <div className=" flex items-center gap-2">
+            <BsCheckCircle className="text-xl" />
+            <p className=" uppercase text-slate-900 text-lg font-medium ">
+              Registered Successfully!
+            </p>
+          </div>
+          <div className="grid place-items-center">
+            <Link href="/account/login">
+              <a
+                className=" bg-green-800 text-white font-medium px-4 py-3 rounded shadow-md"
+                onClick={handleModal}
+              >
+                Proceed to Login
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div> */}
       <div className="img-container">
         <img
           src="/endless-constellation.svg"

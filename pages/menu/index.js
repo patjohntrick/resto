@@ -32,9 +32,9 @@ const menu = ({ products }) => {
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className=" border-black/40 border-[1px] rounded py-2 pl-10 pr-2 outline-none focus:border-green-900 transition-all w-full placeholder:text-black/60 text-slate-900"
+            className=" p-2 py-4 pl-11 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0"
           ></input>
-          <div className=" absolute left-[5%] top-[50%] translate-x-[-5%] translate-y-[-50%] text-xl text-black/70 ">
+          <div className=" absolute left-[5%] top-[50%] translate-x-[-5%] translate-y-[-50%] text-2xl text-black/70 ">
             <BiSearchAlt />
           </div>
         </form>

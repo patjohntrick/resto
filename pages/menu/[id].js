@@ -5,6 +5,7 @@ import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const baseUri = "http://localhost:5000";
 
@@ -39,6 +40,7 @@ const dish = ({ data }) => {
   const [shipDropDown, setShipDropDown] = useState(false);
   const [deliverDropDown, setDeliverDropDown] = useState(false);
   const [user, setUser] = useState("");
+  const router = useRouter();
 
   const getUser = () => {
     const token = localStorage.getItem("token");
@@ -52,18 +54,29 @@ const dish = ({ data }) => {
       _id: data._id,
       name: data.name,
       price: data.price * order,
+      quantity: order,
       image: data.image,
       description: data.description,
     };
-    const res = await axios.post(`${baseUri}/users/${user}/list`, newList);
-    const resData = await res.data;
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You need to login first!");
+      router.push("/account/login");
+    } else {
+      const res = await axios.post(`${baseUri}/users/${user}/list`, newList);
+      const resData = await res.data;
+    }
     // console.log(resData);
   };
   // console.log(newList);
 
   useEffect(() => {
-    getUser();
+    const token = localStorage.getItem("token");
+    if (token) {
+      getUser();
+    }
   }, []);
+
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6 ">
       <div className="single-menu-container mt-6 w-[90%] m-auto">
@@ -129,12 +142,12 @@ const dish = ({ data }) => {
               }.00`}</p>
             </div>
             <hr />
-            <div className="btn flex justify-between gap-2">
-              <p className=" bg-green-800 text-white font-medium text-sm px-3 py-3 curso-pointer w-[50%] text-center capitalize shadow-md hover:shadow-lg transition-all rounded order-1 hover:bg-green-900 ">
+            <div className="btn">
+              {/* <p className=" bg-green-800 text-white font-medium text-sm px-3 py-3 curso-pointer w-[50%] text-center capitalize shadow-md hover:shadow-lg transition-all rounded order-1 hover:bg-green-900 ">
                 order now
-              </p>
+              </p> */}
               <p
-                className=" text-green-900 bg-white font-medium text-sm px-3 py-3 cursor-pointer w-[50%] capitalize text-center shadow-md hover:shadow-lg transition-all rounded hover:bg-green-900 hover:text-white  "
+                className=" text-green-900 bg-white font-medium text-sm px-3 py-3 cursor-pointer capitalize text-center shadow-md hover:shadow-lg transition-all rounded hover:bg-green-900 hover:text-white  "
                 onClick={addToList}
               >
                 add to list
