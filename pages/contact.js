@@ -87,7 +87,7 @@ const contact = () => {
                 type="submit"
                 className=" w-full text-white bg-green-800 shadow-md hover:shadow-lg transition-all py-4 rounded "
               >
-                {send ? "Sending..." : "Submit"}
+                {send ? "Sending..." : "Send a message"}
               </button>
             </div>
           </form>

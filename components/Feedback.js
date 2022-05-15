@@ -9,7 +9,7 @@ const Feedback = () => {
           what they say
         </p>
       </div>
-      <div className="feedback-container space-y-6 md:space-y-0 md:flex md:w-[650px] md:justify-center md:items-center md:gap-8 md:flex-wrap md:m-auto ">
+      <div className="feedback-container space-y-6 md:space-y-0 md:flex md:w-[650px] md:justify-center md:items-center md:gap-8 md:flex-wrap md:m-auto xl:w-[980px] ">
         {reviews.map((review) => {
           return (
             <div

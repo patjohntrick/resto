@@ -13,7 +13,7 @@ const About = () => {
             why choose us?
           </p>
         </div>
-        <div className="content-container lg:w-[900px] lg:m-auto">
+        <div className="content-container lg:w-[900px] lg:m-auto xl:w-[1100px]">
           {about.map((about) => {
             return (
               <div

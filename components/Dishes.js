@@ -10,7 +10,7 @@ const Dishes = () => {
           our best selling dishes
         </p>
       </div>
-      <div className="dish-container space-y-6 md:flex md:flex-wrap md:justify-center md:items-center md:gap-8 md:space-y-0 md:w-[640px] md:m-auto">
+      <div className="dish-container space-y-6 md:flex md:flex-wrap md:justify-center md:items-center md:gap-8 md:space-y-0 md:w-[640px] md:m-auto xl:w-[980px]">
         {dishes.map((dish) => {
           return (
             <div

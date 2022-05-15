@@ -5,7 +5,7 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 const Footer = () => {
   return (
     <footer className=" py-12 ">
-      <div className="footer-container w-[90%] m-auto space-y-6 text-slate-900 lg:grid lg:grid-cols-5 lg:space-y-0 lg:w-[900px] ">
+      <div className="footer-container w-[90%] m-auto space-y-6 text-slate-900 lg:grid lg:grid-cols-5 lg:space-y-0 lg:w-[900px] xl:w-[1100px] ">
         <div className="logo-container lg:col-span-2 lg:px-1 ">
           <p className=" capitalize text-2xl font-bold text-slate-900 lg:text-3xl ">
             resto

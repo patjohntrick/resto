@@ -35,7 +35,7 @@ const cart = () => {
   console.log(user);
   return (
     <section className=" pt-[10vh] bg-black/5 ">
-      <div className="container w-[90%] m-auto py-6 ">
+      <div className="container w-[90%] m-auto py-6 lg:w-[800px] xl:w-[1000px] ">
         <div className="text-container text-4xl text-green-800 font-medium capitalize mb-4">
           my list
         </div>
@@ -71,7 +71,7 @@ const cart = () => {
                       <p>{cart.quantity}</p>
                       <p>{`P${cart.price}.00`}</p>
                       <p
-                        className=" flex justify-center text-red-900 "
+                        className=" flex justify-center text-red-900 cursor-pointer "
                         onClick={() => removeList(cart._id)}
                       >
                         <GiCancel />
@@ -87,12 +87,12 @@ const cart = () => {
         <footer className=" mt-2 ">
           <div className="text-container flex justify-end gap-2 item-center">
             <div className="total flex justify-center gap-1 items-center ">
-              <p className=" text-sm font-medium text-slate-900 ">Total:</p>
+              {/* <p className=" text-sm font-medium text-slate-900 ">Total:</p>
               <p className=" text-green-900 font-semibold text-xl ">
                 {user.map((cart) => `${cart.price + cart.price}`)}
-              </p>
+              </p> */}
             </div>
-            <a className=" bg-green-800 text-white px-3 py-2 rounded shadow-md hover:bg-green-900 transition-all ">
+            <a className=" bg-green-800 text-white px-3 py-2 rounded shadow-md hover:bg-green-900 transition-all cursor-pointer ">
               Order now
             </a>
           </div>

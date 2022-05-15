@@ -28,7 +28,7 @@ const menu = ({ products }) => {
       <div className="product-container py-6 lg:w-[900px] lg:m-auto">
         <form
           onSubmit={handleSubmit}
-          className=" relative  w-[90%] m-auto phone:w-[80%] md:w-[90%] "
+          className=" relative  w-[90%] m-auto phone:w-[80%] md:w-[90%] xl:w-[980px] "
         >
           <input
             type="search"
@@ -42,7 +42,7 @@ const menu = ({ products }) => {
             <BiSearchAlt />
           </div>
         </form>
-        <div className="container pt-4 w-[90%] m-auto space-y-6 phone:w-[80%] md:w-[90%] md:flex md:flex-wrap md:justify-center md:items-center md:space-y-0 md:gap-8 ">
+        <div className="container pt-4 w-[90%] m-auto space-y-6 phone:w-[80%] md:w-[90%] md:flex md:flex-wrap md:justify-center md:items-center md:space-y-0 md:gap-8 xl:w-[980px] ">
           {products.map((product) => {
             return (
               <Link href={`/menu/${product._id}`} key={product._id}>

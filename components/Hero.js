@@ -25,15 +25,15 @@ const Hero = () => {
         {hero.map((data) => {
           return (
             <SwiperSlide key={data.id}>
-              <div className="hero-container w-[90%] m-auto md:flex md:mt-10 md:items-center lg:w-[900px] ">
-                <div className="text-container my-6 space-y-2">
+              <div className="hero-container w-[90%] m-auto md:flex md:mt-10 md:items-center lg:w-[900px] xl:w-[1100px] ">
+                <div className="text-container my-6 space-y-2 xl:w-[600px]">
                   <p className=" text-green-900 capitalize font-medium ">
                     {data.subtitle}
                   </p>
-                  <p className=" text-slate-900 text-4xl font-black leading-none ">
+                  <p className=" text-slate-900 text-4xl font-black leading-none xl:w-[90%] ">
                     {data.title}
                   </p>
-                  <p className=" text-black/70 font-medium w-[90%] ">
+                  <p className=" text-black/70 font-medium w-[90%] xl:w-[80%] ">
                     {data.paragraph}{" "}
                     <span className="hidden lg:block ">
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit.

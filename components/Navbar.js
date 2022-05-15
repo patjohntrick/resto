@@ -43,8 +43,8 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <nav className=" shadow fixed px-8 w-full bg-white z-50 ">
-        <div className="nav-container flex justify-between items-center min-h-[10vh] lg:w-[900px] lg:m-auto lg:p-0">
+      <nav className=" shadow fixed px-8 w-full backdrop-blur-lg bg-white/70 z-50 ">
+        <div className="nav-container flex justify-between items-center min-h-[10vh] lg:w-[900px] lg:m-auto lg:p-0 xl:w-[1100px]">
           <div className="logo">
             <p>
               <Link href="/">
