@@ -7,9 +7,14 @@ const Footer = () => {
     <footer className=" py-12 ">
       <div className="footer-container w-[90%] m-auto space-y-6 text-slate-900 lg:grid lg:grid-cols-5 lg:space-y-0 lg:w-[900px] xl:w-[1100px] ">
         <div className="logo-container lg:col-span-2 lg:px-1 ">
-          <p className=" capitalize text-2xl font-bold text-slate-900 lg:text-3xl ">
+          {/* <p className=" capitalize text-2xl font-bold text-slate-900 lg:text-3xl ">
             resto
-          </p>
+          </p> */}
+          <img
+            src="/logo.png"
+            alt=""
+            className=" w-[70px] h-[40px] lg:w-[80px] lg:h-[50px]"
+          />
           <p className=" text-black/70 mb-2 ">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Laudantium, molestiae.
@@ -45,17 +50,17 @@ const Footer = () => {
           </header>
           <ul className="links space-y-1">
             <li>
-              <Link href="">
+              <Link href="/">
                 <a>Home</a>
               </Link>
             </li>
             <li>
-              <Link href="">
+              <Link href="/menu">
                 <a>Menu</a>
               </Link>
             </li>
             <li>
-              <Link href="">
+              <Link href="/contact">
                 <a>Contact Us</a>
               </Link>
             </li>

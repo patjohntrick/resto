@@ -48,9 +48,14 @@ const Navbar = () => {
           <div className="logo">
             <p>
               <Link href="/">
-                <a className=" text-2xl capitalize font-bold text-slate-900 lg:text-3xl">
+                {/* <a className=" text-2xl capitalize font-bold text-slate-900 lg:text-3xl">
                   Resto
-                </a>
+                </a> */}
+                <img
+                  src="/logo.png"
+                  alt=""
+                  className=" w-[70px] h-[40px] lg:w-[80px] lg:h-[50px]"
+                />
               </Link>
             </p>
           </div>
