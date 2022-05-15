@@ -13,18 +13,21 @@ const About = () => {
             why choose us?
           </p>
         </div>
-        <div className="content-container">
+        <div className="content-container lg:w-[900px] lg:m-auto">
           {about.map((about) => {
             return (
-              <div className="container" key={about.id}>
+              <div
+                className="container md:flex md:justify-center md:items-center "
+                key={about.id}
+              >
                 <div className="img-container">
                   <img src={about.image} alt="" />
                 </div>
-                <div className="text-container space-y-2">
-                  <p className=" text-2xl uppercase font-semibold text-slate-900 text-center ">
+                <div className="text-container space-y-2 md:w-[180%] lg:w-[120%]">
+                  <p className=" text-2xl uppercase font-semibold text-slate-900 text-center md:text-left ">
                     {about.title}
                   </p>
-                  <p className=" text-black/70 text-justify ">
+                  <p className=" text-black/70 text-justify md:text-left ">
                     {about.paragraph}
                   </p>
                   <div className="link grid grid-cols-2 gap-2 ">

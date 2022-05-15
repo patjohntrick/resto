@@ -51,8 +51,7 @@ const cart = () => {
             {user.map((cart) => {
               // const total = cart.price.reduce((a, b) => a + b);
               // console.log(total);
-              const totalArray = [];
-              totalArray.push(cart.price);
+              const totalArray = [cart.price];
               console.log(totalArray);
               if (user == 0) {
                 return (
@@ -89,7 +88,9 @@ const cart = () => {
           <div className="text-container flex justify-end gap-2 item-center">
             <div className="total flex justify-center gap-1 items-center ">
               <p className=" text-sm font-medium text-slate-900 ">Total:</p>
-              <p className=" text-green-900 font-semibold text-xl ">{`PP`}</p>
+              <p className=" text-green-900 font-semibold text-xl ">
+                {user.map((cart) => `${cart.price + cart.price}`)}
+              </p>
             </div>
             <a className=" bg-green-800 text-white px-3 py-2 rounded shadow-md hover:bg-green-900 transition-all ">
               Order now

@@ -92,14 +92,17 @@ const register = () => {
           className=" h-[100px] w-full object-cover "
         />
       </div>
-      <div className="form-container w-[90%] m-auto ">
+      <div className="form-container w-[90%] m-auto lg:w-[700px] ">
         <header>
-          <p className=" text-green-800 text-4xl font-medium capitalize pt-8 pb-4">
+          <p className=" text-green-800 text-4xl font-medium capitalize pt-8 pb-4 md:text-center">
             create your account
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} className="space-y-4 mb-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 mb-4 md:w-[60%] md:mx-auto"
+        >
           <div>
             <label htmlFor="name" className={label}>
               Name

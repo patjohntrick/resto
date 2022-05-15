@@ -8,7 +8,7 @@ import { hero } from "./data.js";
 
 const Hero = () => {
   return (
-    <section className="pt-[10vh] relative shadow">
+    <section className="pt-[10vh] relative shadow ">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -25,7 +25,7 @@ const Hero = () => {
         {hero.map((data) => {
           return (
             <SwiperSlide key={data.id}>
-              <div className="hero-container w-[90%] m-auto">
+              <div className="hero-container w-[90%] m-auto md:flex md:mt-10 md:items-center lg:w-[900px] ">
                 <div className="text-container my-6 space-y-2">
                   <p className=" text-green-900 capitalize font-medium ">
                     {data.subtitle}
@@ -34,7 +34,11 @@ const Hero = () => {
                     {data.title}
                   </p>
                   <p className=" text-black/70 font-medium w-[90%] ">
-                    {data.paragraph}
+                    {data.paragraph}{" "}
+                    <span className="hidden lg:block ">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Omnis aspernatu.
+                    </span>
                   </p>
                   <div className="pt-2">
                     <Link href="/menu">

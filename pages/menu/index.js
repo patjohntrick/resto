@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { MdBorderColor } from "react-icons/md";
 import Link from "next/link";
+import Image from "next/image";
 
 const baseUri = "http://localhost:5000";
 
@@ -24,8 +25,11 @@ const menu = ({ products }) => {
   };
   return (
     <section className=" pt-[10vh] bg-black/5 ">
-      <div className="product-container py-6">
-        <form onSubmit={handleSubmit} className=" relative  w-[90%] m-auto ">
+      <div className="product-container py-6 lg:w-[900px] lg:m-auto">
+        <form
+          onSubmit={handleSubmit}
+          className=" relative  w-[90%] m-auto phone:w-[80%] md:w-[90%] "
+        >
           <input
             type="search"
             placeholder="Search..."
@@ -34,15 +38,15 @@ const menu = ({ products }) => {
             onChange={(e) => setSearch(e.target.value)}
             className=" p-2 py-4 pl-11 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0"
           ></input>
-          <div className=" absolute left-[5%] top-[50%] translate-x-[-5%] translate-y-[-50%] text-2xl text-black/70 ">
+          <div className=" absolute left-[5%] top-[50%] translate-x-[-5%] translate-y-[-50%] text-2xl text-black/70 md:left-[3%] lg:left-[2%] ">
             <BiSearchAlt />
           </div>
         </form>
-        <div className="container pt-4 w-[90%] m-auto space-y-6">
+        <div className="container pt-4 w-[90%] m-auto space-y-6 phone:w-[80%] md:w-[90%] md:flex md:flex-wrap md:justify-center md:items-center md:space-y-0 md:gap-8 ">
           {products.map((product) => {
             return (
               <Link href={`/menu/${product._id}`} key={product._id}>
-                <div className="box shadow-lg rounded p-4 bg-white relative z-10">
+                <div className="box shadow-lg rounded p-4 bg-white relative z-10 md:w-[300px] cursor-pointer lg:shadow-md lg:hover:shadow-xl transition-all ">
                   <div className="img-container">
                     <img
                       src={product.image}

@@ -10,11 +10,11 @@ const Dishes = () => {
           our best selling dishes
         </p>
       </div>
-      <div className="dish-container space-y-6">
+      <div className="dish-container space-y-6 md:flex md:flex-wrap md:justify-center md:items-center md:gap-8 md:space-y-0 md:w-[640px] md:m-auto">
         {dishes.map((dish) => {
           return (
             <div
-              className="box bg-white w-[90%] m-auto text-center rounded shadow-md pt-6 pb-8 space-y-4 capitalize hover:shadow-xl transition-all"
+              className="box bg-white w-[90%] m-auto text-center rounded shadow-md pt-6 pb-8 space-y-4 capitalize hover:shadow-xl transition-all phone:w-[80%] md:w-[300px] md:h-[300px] md:space-y-0 "
               key={dish.id}
             >
               <div className="img-container grid place-items-center">

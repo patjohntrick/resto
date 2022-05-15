@@ -65,6 +65,8 @@ const dish = ({ data }) => {
     } else {
       const res = await axios.post(`${baseUri}/users/${user}/list`, newList);
       const resData = await res.data;
+      alert("Added to list.");
+      router.push("/menu");
     }
     // console.log(resData);
   };
@@ -79,24 +81,28 @@ const dish = ({ data }) => {
 
   return (
     <section className=" pt-[10vh] bg-black/5 pb-6 ">
-      <div className="single-menu-container mt-6 w-[90%] m-auto">
-        <header className=" flex items-center capitalize mb-4 ">
+      <div className="single-menu-container mt-6 w-[90%] m-auto phone:w-[80%] md:w-[60%] lg:w-[700px] ">
+        <header className=" flex items-center capitalize mb-4 lg:w-[80%] lg:m-auto lg:mb-4 ">
           <Link href={`/menu`}>
             <a className=" text-green-900 cursor-pointer ">{`back to menu`}</a>
           </Link>
           <p className="px-2">{`|`}</p>
           <p>{data.name}</p>
         </header>
-        <div className="menu-container">
-          <div className="img-container">
-            <img src={data.image} alt="" className=" w-full rounded " />
+        <div className="menu-container ">
+          <div className="img-container lg:grid lg:place-items-center ">
+            <img
+              src={data.image}
+              alt=""
+              className=" w-full rounded lg:w-[300px] object-cover "
+            />
           </div>
-          <div className="text-container space-y-2">
+          <div className="text-container space-y-2 lg:w-[80%] lg:m-auto ">
             <div className="header mt-2 ">
-              <p className=" capitalize text-slate-900 font-semibold text-2xl ">
+              <p className=" capitalize text-slate-900 font-semibold text-2xl lg:text-center ">
                 {data.name}
               </p>
-              <p className=" font-semibold text-green-800 ">{`P${data.price}.00`}</p>
+              <p className=" font-semibold text-green-800 lg:text-center ">{`P${data.price}.00`}</p>
               <p className=" text-black/70 text-justify ">{data.description}</p>
             </div>
 
@@ -183,8 +189,9 @@ const dish = ({ data }) => {
                       : "hidden"
                   }
                 >
-                  Free shipping on orders above PHP 1,000. We deliver your food
-                  order via our partner courrier, cash on delivery.
+                  Free shipping on orders above{" "}
+                  <span className="font-semibold">PHP 1,000</span>. We deliver
+                  your food order via our partner courrier, cash on delivery.
                 </p>
               </div>
 

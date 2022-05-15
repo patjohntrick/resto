@@ -9,11 +9,11 @@ const Feedback = () => {
           what they say
         </p>
       </div>
-      <div className="feedback-container space-y-6">
+      <div className="feedback-container space-y-6 md:space-y-0 md:flex md:w-[650px] md:justify-center md:items-center md:gap-8 md:flex-wrap md:m-auto ">
         {reviews.map((review) => {
           return (
             <div
-              className="box bg-white w-[90%] m-auto p-4 space-y-2 relative rounded shadow-md"
+              className="box bg-white w-[90%] m-auto p-4 space-y-2 relative rounded shadow-md phone:w-[80%] md:w-[300px] "
               key={review.id}
             >
               <img
