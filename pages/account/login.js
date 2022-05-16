@@ -119,12 +119,12 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <p className=" text-center text-black/70 ">
+        {/* <p className=" text-center text-black/70 ">
           Dont have an account
           <Link href="/account/register">
-            <a className=" text-blue-800 "> Sign up</a>
-          </Link>{" "}
-        </p>
+            <a className=" text-blue-800 ">Sign up</a>
+          </Link>
+        </p> */}
       </div>
     </section>
   );
