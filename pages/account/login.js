@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import axios from "axios";
 
-const login = () => {
+const Login = () => {
   const baseUri = "http://localhost:5000";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
-
-  const router = useRouter();
 
   const inputBox =
     " p-2 py-4 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0 ";
@@ -133,4 +130,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

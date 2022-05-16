@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { BsCheckCircle } from "react-icons/bs";
 
-const register = () => {
+const Register = () => {
   const router = useRouter();
   const inputBox =
     " p-2 py-4 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0 ";
@@ -191,4 +190,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

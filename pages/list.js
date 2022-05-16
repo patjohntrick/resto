@@ -3,7 +3,7 @@ import { GiCancel } from "react-icons/gi";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
-const cart = () => {
+const Cart = () => {
   const [user, setUser] = useState([]);
 
   const baseUri = "http://localhost:5000";
@@ -102,4 +102,4 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;

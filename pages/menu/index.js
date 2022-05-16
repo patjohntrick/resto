@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const menu = ({ products }) => {
+const Menu = ({ products }) => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
@@ -83,4 +83,4 @@ const menu = ({ products }) => {
   );
 };
 
-export default menu;
+export default Menu;

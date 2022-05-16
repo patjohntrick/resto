@@ -54,7 +54,7 @@ const Navbar = () => {
                 <img
                   src="/logo.png"
                   alt=""
-                  className=" w-[70px] h-[40px] lg:w-[80px] lg:h-[50px]"
+                  className=" w-[70px] h-[40px] lg:w-[80px] lg:h-[50px] cursor-pointer"
                 />
               </Link>
             </p>

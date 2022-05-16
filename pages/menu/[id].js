@@ -35,7 +35,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const dish = ({ data }) => {
+const Dish = ({ data }) => {
   const [order, setOrder] = useState(1);
   const [shipDropDown, setShipDropDown] = useState(false);
   const [deliverDropDown, setDeliverDropDown] = useState(false);
@@ -235,4 +235,4 @@ const dish = ({ data }) => {
   );
 };
 
-export default dish;
+export default Dish;
