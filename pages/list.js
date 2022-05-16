@@ -56,7 +56,7 @@ const Cart = () => {
               if (user == 0) {
                 return (
                   <div>
-                    <p>You don't have order yet.</p>
+                    <p>{`You don't have order yet.`}</p>
                     <p>Order now</p>
                   </div>
                 );
