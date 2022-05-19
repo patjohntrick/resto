@@ -23,6 +23,7 @@ const Menu = ({ products }) => {
     console.log(search);
     setSearch("");
   };
+
   return (
     <section className=" pt-[10vh] bg-black/5 ">
       <div className="product-container py-6 lg:w-[900px] lg:m-auto">
