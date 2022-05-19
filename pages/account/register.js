@@ -15,7 +15,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
 
-  const baseUri = "http://localhost:5000";
+  const baseUri = "https://restofood.herokuapp.com/";
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = {

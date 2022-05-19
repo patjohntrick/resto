@@ -6,7 +6,7 @@ import axios from "axios";
 const Cart = () => {
   const [user, setUser] = useState([]);
 
-  const baseUri = "http://localhost:5000";
+  const baseUri = "https://restofood.herokuapp.com/";
 
   const getList = async () => {
     const token = localStorage.getItem("token");
