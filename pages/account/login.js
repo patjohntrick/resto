@@ -3,7 +3,7 @@ import Link from "next/link";
 import axios from "axios";
 
 const Login = () => {
-  const baseUri = "https://restofood.herokuapp.com/";
+  const baseUri = "https://restofood.herokuapp.com";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);

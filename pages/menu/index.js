@@ -4,7 +4,7 @@ import { MdBorderColor } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
 
-const baseUri = "https://restofood.herokuapp.com/";
+const baseUri = "https://restofood.herokuapp.com";
 
 export const getStaticProps = async () => {
   const fetchProducts = await fetch(`${baseUri}/products`);
