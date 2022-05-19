@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const baseUri = "http://localhost:5000";
+const baseUri = "https://restofood.herokuapp.com/";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${baseUri}/products`);
