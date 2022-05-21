@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const baseUri = "https://restofood.herokuapp.com";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // userValidator - it fires when there account logged in
+    const token = localStorage.getItem("token");
+    if (token) {
+      alert(
+        "Ooopps, it seems there already account logged in. Please log out first!"
+      );
+      router.push("/");
+    }
+  }, []);
 
   const inputBox =
     " p-2 py-4 text-black/90 rounded border-[1px] border-black/30 hover:border-black/50 focus:border-[2px] focus:border-green-800 outline-none w-full mt-1 bg-black/0 ";
@@ -122,7 +136,7 @@ const Login = () => {
         <p className=" text-center text-black/70 ">
           Don&apos;t have an account?
           <Link href="/account/register">
-            <a className=" text-blue-800 ">Sign up</a>
+            <a className=" text-blue-800 "> Sign up</a>
           </Link>
         </p>
       </div>

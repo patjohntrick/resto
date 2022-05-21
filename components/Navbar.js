@@ -12,6 +12,8 @@ const Navbar = () => {
   const [profile, setProfile] = useState(false);
   const [userModal, setUserModal] = useState(false);
 
+  // console.log(user.name.length);
+
   const handleNavbar = () => {
     setNavBar(!navBar);
   };
@@ -126,13 +128,13 @@ const Navbar = () => {
       </nav>
       <div
         className={
-          "link-container fixed top-[10vh] w-full left-0 h-[90%] overflow-hidden transition-all " +
+          "link-container fixed top-[10vh] w-full left-0 h-[90%] overflow-hidden transition-all lg:hidden " +
           (navBar ? " backdrop-blur-sm z-50" : " backdrop-blur-none -z-10")
         }
       >
         <div
           className={
-            "links absolute bg-green-50 text-slate-900 p-4 top-0 w-[180px] h-full text-right uppercase transition-all " +
+            "links absolute bg-green-50 text-slate-900 p-4 top-0 w-[180px] h-full text-right uppercase transition-all lg:hidden " +
             (navBar ? "right-0" : "right-[-70%]")
           }
         >

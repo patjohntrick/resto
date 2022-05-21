@@ -15,6 +15,17 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
 
+  useEffect(() => {
+    // userValidator - it fires when there account logged in
+    const token = localStorage.getItem("token");
+    if (token) {
+      alert(
+        "Ooopps, it seems there already account logged in. Please log out first!"
+      );
+      router.push("/");
+    }
+  }, []);
+
   const baseUri = "https://restofood.herokuapp.com";
   const handleSubmit = async (e) => {
     e.preventDefault();

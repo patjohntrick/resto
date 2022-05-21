@@ -3,8 +3,15 @@ import { GiCancel } from "react-icons/gi";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
+// Total
+const TotalPrice = ({ user }) => {
+  const price = user.map((user) => user.price);
+  return <>{price.length > 0 ? `P${price.reduce((a, b) => a + b)}.00` : 0}</>;
+};
+
 const Cart = () => {
   const [user, setUser] = useState([]);
+  const [total, setTotal] = useState([]);
 
   const baseUri = "https://restofood.herokuapp.com";
 
@@ -49,18 +56,8 @@ const Cart = () => {
 
           <div className="list-container first:rounded-t last:rounded-b">
             {user.map((cart) => {
-              // const total = cart.price.reduce((a, b) => a + b);
-              // console.log(total);
-              const totalArray = [cart.price];
-              console.log(totalArray);
-              if (user == 0) {
-                return (
-                  <div>
-                    <p>{`You don't have order yet.`}</p>
-                    <p>Order now</p>
-                  </div>
-                );
-              } else {
+              console.log(user.length);
+              if (user.length >= 1) {
                 return (
                   <div key={cart._id}>
                     <div className=" grid grid-cols-4 text-slate-900 text-center text-sm bg-white  shadow py-3 ">
@@ -80,6 +77,13 @@ const Cart = () => {
                     <hr />
                   </div>
                 );
+              } else {
+                return (
+                  <div>
+                    <p>{`You don't have order yet.`}</p>
+                    <p>Order now</p>
+                  </div>
+                );
               }
             })}
           </div>
@@ -87,10 +91,10 @@ const Cart = () => {
         <footer className=" mt-2 ">
           <div className="text-container flex justify-end gap-2 item-center">
             <div className="total flex justify-center gap-1 items-center ">
-              {/* <p className=" text-sm font-medium text-slate-900 ">Total:</p>
+              <p className=" text-sm font-medium text-slate-900 ">Total:</p>
               <p className=" text-green-900 font-semibold text-xl ">
-                {user.map((cart) => `${cart.price + cart.price}`)}
-              </p> */}
+                <TotalPrice user={user} />
+              </p>
             </div>
             <a className=" bg-green-800 text-white px-3 py-2 rounded shadow-md hover:bg-green-900 transition-all cursor-pointer ">
               Order now
